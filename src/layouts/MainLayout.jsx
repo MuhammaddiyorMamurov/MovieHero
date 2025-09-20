@@ -1,15 +1,15 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import {Header} from '../components'
+import Footer from '../components/Footer'
 
 function MainLayout() {
   return  <>
-      <header>
-        <h2 className='font-extrabold text-3xl'>Movie Finder</h2>
-      </header>
-      <main>
+      <Header/>
+      <main className='py-10 grow'>
         <Outlet/>
       </main>
-      <footer>Footer</footer>
+      <Footer/>
     </>
   
 }

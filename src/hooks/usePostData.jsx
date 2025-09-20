@@ -1,10 +1,9 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const URL = "https://json-api.uz/api/project/movies/movies"
 
-
-const useGetData = function (showModal){
+const usePostData = function (body){
     const[data, setData] = useState(null);
     const[error, setError] = useState(null)
     const[loading, setLoading] = useState(false)
@@ -13,7 +12,7 @@ const useGetData = function (showModal){
     const getData = async () => {
         setLoading(true)
       try{
-         const response = await axios.get(URL)
+         const response = await axios.post(URL, body)
   
         if(response.status !== 200){
           throw new Error("Something went wrong")
@@ -32,11 +31,11 @@ const useGetData = function (showModal){
   
     useEffect(()=>{
       getData();
-    }, [showModal]);
+    }, []);
 
 
     return {data, loading, error}
 }
 
 
-export default useGetData
+export default usePostData
